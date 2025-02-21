@@ -90,4 +90,4 @@ Feel free to open issues or submit pull requests if you have any improvements or
 
 ## Developer
 
-Developed by [Krishan Gupta](https://github.com/krishangupta33)# image_background-remover-docker-app
+Developed by [Krishan Gupta](https://github.com/krishangupta33)
