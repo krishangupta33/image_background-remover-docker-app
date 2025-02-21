@@ -1,0 +1,5 @@
+flask
+rembg
+pillow
+onnxruntime
+streamlit
