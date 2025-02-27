@@ -1,3 +1,4 @@
 templates
 u2net.onnx
 .DS_Store
+.env
