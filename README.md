@@ -75,6 +75,61 @@ streamlit run app.py
 3. Wait for the background removal process to complete
 4. Download the processed image using the "Download processed image" button
 
+
+## Docker Cloud Deployment
+
+1. Build the Docker image(for google cloud run use platform linux/amd64):
+```bash
+docker build --platform linux/amd64 -t streamlit-app:latest .
+
+
+2. Run the Docker container:
+```bash
+docker run -p 8501:8501 streamlit-app:latest
+```
+
+3. Install and authenticate Google Cloud CLI:
+```bash
+gcloud auth login
+gcloud config set project projectk-33
+```
+
+4. Configure Docker for Google Cloud:
+```bash
+gcloud auth configure-docker
+```
+
+5. Tag for Google Container Registry:
+```bash
+docker tag streamlit-app:latest gcr.io/projectk-33/streamlit-app:latest
+```
+
+6. Push to Google Container Registry:
+```bash
+docker push gcr.io/projectk-33/streamlit-app:latest
+```
+
+7. Deploy to Cloud Run:
+```bash
+gcloud run deploy streamlit-app \
+  --image gcr.io/projectk-33/streamlit-app:latest \
+  --platform managed \
+  --region us-central1 \
+  --allow-unauthenticated \
+  --memory 4Gi \
+  --cpu 4 \
+  --min-instances 2 \
+  --max-instances 10 \
+  --concurrency 50 \
+  --timeout 3600 \
+```
+
+
+
+Note: Replace `projectk-33` with your actual Google Cloud project ID.
+
+
+
 ## Contributing
 
 Feel free to open issues or submit pull requests if you have any improvements or bug fixes.

@@ -35,5 +35,7 @@ ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 ENV HOME=/root
 
-# Command to run when the container starts
-CMD ["streamlit", "run", "app.py", "--server.address", "0.0.0.0"]
+
+ENV PORT=8501
+EXPOSE ${PORT}
+CMD streamlit run app.py --server.port=${PORT} --server.address=0.0.0.0
